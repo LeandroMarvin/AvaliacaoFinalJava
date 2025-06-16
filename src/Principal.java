@@ -3,11 +3,11 @@ import java.util.Scanner;
 public class Principal {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner leitor = new Scanner(System.in);
 
         System.out.println("===== Bem-vindo ao RPG por Turnos =====");
         System.out.print("Digite o nome do seu herói: ");
-        String nomeHeroi = scanner.nextLine();
+        String nomeHeroi = leitor.nextLine();
 
         Heroi heroi = null;
 
@@ -19,26 +19,26 @@ public class Principal {
             MostrarDescricao.mostrarDescricaoElfo();
 
             System.out.print("\nDigite o número da classe: ");
-            String escolha = scanner.nextLine();
+            String escolha = leitor.nextLine();
 
             switch (escolha) {
                 case "1":
-                    if (confirmarEscolha(scanner)) {
+                    if (confirmarEscolha(leitor)) {
                         heroi = new Guerreiro(nomeHeroi);
                     }
                     break;
                 case "2":
-                    if (confirmarEscolha(scanner)) {
+                    if (confirmarEscolha(leitor)) {
                         heroi = new Mago(nomeHeroi);
                     }
                     break;
                 case "3":
-                    if (confirmarEscolha(scanner)) {
+                    if (confirmarEscolha(leitor)) {
                         heroi = new Anao(nomeHeroi);
                     }
                     break;
                 case "4":
-                    if (confirmarEscolha(scanner)) {
+                    if (confirmarEscolha(leitor)) {
                         heroi = new Elfo(nomeHeroi);
                     }
                     break;
@@ -66,11 +66,11 @@ public class Principal {
                 System.out.println("3 - Usar habilidade especial");
                 System.out.println("4 - Usar poção");
                 System.out.print("Digite a ação: ");
-                String acao = scanner.nextLine();
+                String opcao = leitor.nextLine();
 
                 System.out.println();
 
-                switch (acao) {
+                switch (opcao) {
                     case "1":
                         heroi.atacar(inimigo);
                         break;
@@ -118,12 +118,12 @@ public class Principal {
 
         RankingManager.salvarRanking(heroi.getNome(), pontuacaoFinal, heroi.estaVivo());
 
-        scanner.close();
+        leitor.close();
     }
 
-    private static boolean confirmarEscolha(Scanner scanner) {
+    private static boolean confirmarEscolha(Scanner leitor) {
         System.out.print("Confirmar essa classe? (S/N): ");
-        String resposta = scanner.nextLine().trim().toUpperCase();
+        String resposta = leitor.nextLine().trim().toUpperCase();
         return resposta.equals("S");
     }
 }
