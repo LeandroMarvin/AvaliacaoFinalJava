@@ -1,16 +1,17 @@
 public class Orc extends Inimigo {
 
-    public Orc(String nome, int vida, int ataqueBase, double chanceAcertoCritico) {
-        super(nome, vida, ataqueBase, chanceAcertoCritico);
+    public Orc() {
+        super("Orc", 100, 20, 0.15);
     }
 
-    public Orc() {
-        super("Orc", 120, 15, 0.25);
+    public Orc(String nome, int vida, int ataque, double chanceCritico) {
+        super(nome, vida, ataque, chanceCritico);
     }
 
     @Override
-    public void atacar(Heroi heroi) {
-        System.out.println("Orc avança para atacar!");
-        super.atacar(heroi);  // Chama o método atacar da superclasse Inimigo
+    public void habilidadeEspecial(Heroi heroi) {
+        int danoGrito = 30;
+        heroi.receberDano(danoGrito);
+        System.out.println(getNome() + " usou Grito de Guerra causando " + danoGrito + " de dano!");
     }
 }

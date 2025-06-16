@@ -1,4 +1,4 @@
-public class Inimigo {
+public abstract class Inimigo {
 
     private String nome;
     private int vida;
@@ -16,10 +16,6 @@ public class Inimigo {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public int getVida() {
         return vida;
     }
@@ -32,16 +28,8 @@ public class Inimigo {
         return ataque;
     }
 
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-
     public double getChanceCritico() {
         return chanceCritico;
-    }
-
-    public void setChanceCritico(double chanceCritico) {
-        this.chanceCritico = chanceCritico;
     }
 
     public void atacar(Heroi heroi) {
@@ -55,16 +43,15 @@ public class Inimigo {
         if (heroi.isEstaDefendendo()) {
             dano /= 2;
             System.out.println(heroi.getNome() + " está se defendendo! Dano reduzido para " + dano + ".");
-            heroi.setEstaDefendendo(false); // Resetando defesa após o ataque
+            heroi.setEstaDefendendo(false);
         }
 
         heroi.receberDano(dano);
-        System.out.println(nome + " atacou " + heroi.getNome() + " causando " + dano + " de dano.\n\n");
+        System.out.println(nome + " atacou " + heroi.getNome() + " causando " + dano + " de dano.\n");
     }
 
     public void receberDano(int dano) {
-        vida -= dano;
-        if (vida < 0) vida = 0;
+        vida = Math.max(vida - dano, 0);
     }
 
     public boolean estaVivo() {
@@ -74,4 +61,7 @@ public class Inimigo {
     public void exibirStatus() {
         System.out.println("Inimigo: " + nome + " | Vida: " + vida + "\n");
     }
+
+    // Método abstrato para habilidades especiais dos inimigos
+    public abstract void habilidadeEspecial(Heroi heroi);
 }

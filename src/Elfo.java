@@ -1,20 +1,20 @@
 public class Elfo extends Heroi {
 
     public Elfo(String nome) {
-        super(nome, 90, 12, 100, "Energia");
+        super(nome, 90, 15, 100, "Flechas");
     }
 
     @Override
     public void usarHabilidadeEspecial(Inimigo inimigo) {
-        int custoEnergia = 25;
+        int custoFlechas = 25;
         int dano = 35;
 
-        if (getRecurso() >= custoEnergia) {
-            setRecurso(getRecurso() - custoEnergia);
+        if (getRecurso() >= custoFlechas) {
+            setRecurso(getRecurso() - custoFlechas);
             inimigo.receberDano(dano);
-            System.out.println(getNome() + " usou Flecha Fantasma causando " + dano + " de dano! Energia restante: " + getRecurso());
+            System.out.println(getNome() + " usou Flecha Fantasma causando " + dano + " de dano! Flechas restantes: " + getRecurso());
         } else {
-            System.out.println(getNome() + " não tem energia suficiente para usar Flecha Fantasma!");
+            System.out.println(getNome() + " não tem flechas suficientes para usar Flecha Fantasma!");
         }
     }
 

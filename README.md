@@ -1,64 +1,85 @@
-# RPG por Turnos - Projeto Java
+
+# RPG por Turnos
 
 ## Informações Gerais sobre o Projeto
 
-Este projeto é um jogo de RPG por turnos desenvolvido em Java, com foco em programação orientada a objetos. O objetivo é oferecer uma experiência básica de combate por turnos entre um herói e inimigos, incluindo escolha de classes, uso de habilidades especiais, poções e estratégias de defesa.
+Este projeto é um jogo RPG por turnos desenvolvido em Java, onde o jogador controla um herói que enfrenta uma série de inimigos em batalhas por turnos. O objetivo principal é criar um sistema simples e funcional que demonstre conceitos fundamentais de programação orientada a objetos (POO), incluindo herança, polimorfismo, interfaces, tratamento de exceções, e persistência de dados.
 
-Funcionalidades principais:
-- Escolha do nome e da classe do herói (Guerreiro, Mago, Anão, Elfo).
-- Sistema de combate por turnos contra inimigos variados (Goblin, Orc, Dragão).
-- Implementação de habilidades especiais, uso de poções e defesa.
-- Registro de pontuação em arquivo de texto (ranking.txt).
-- Menu interativo para seleção de ações durante a batalha.
+### Funcionalidades principais:
+- Escolha entre diferentes classes de heróis (Guerreiro, Mago, Anão, Elfo), cada uma com atributos e habilidades especiais próprias.
+- Sistema de combate por turnos com opções de atacar, defender, usar habilidade especial e usar poção.
+- Inimigos variados (Goblin, Orc, Dragão) com atributos e ataques próprios.
+- Sistema de persistência simples para salvar pontuações em arquivo texto.
+- Interface de texto no console para interação com o usuário.
+
+---
 
 ## Informações sobre as Classes e suas Relações
 
-- **Heroi (abstract class)**: Classe base para os heróis, com atributos comuns como nome, vida, ataque, recurso, número de poções e método abstrato para habilidade especial e defesa. Utiliza encapsulamento com atributos privados e getters/setters.
+### Hierarquia e Herança
+- A classe abstrata `Heroi` é a superclasse de todas as classes de heróis específicas (`Guerreiro`, `Mago`, `Anao`, `Elfo`), fornecendo atributos comuns como nome, vida, ataque, recurso especial, número de poções e métodos básicos.
+- A classe `Inimigo` é superclasse para inimigos específicos como `Orc`, `Dragao` e `Goblin` , que herdam seus atributos e podem implementar habilidades especiais.
 
-- **Guerreiro, Mago, Anao, Elfo (classes concretas)**: Estendem `Heroi`, implementando habilidades e características específicas.
+### Interfaces e Polimorfismo
+- A interface `IAcoesDeCombate` define o contrato para as ações de combate, com os métodos:
+  - `void atacar(Inimigo inimigo);`
+  - `void defender();`
+  - `void usarHabilidadeEspecial(Inimigo inimigo);`
+  - `void usarPocao();`
+- As classes de heróis implementam essa interface para garantir a consistência nas ações de combate e permitir tratamento polimórfico dos objetos.
 
-- **Inimigo (classe base)**: Representa inimigos no jogo, com atributos de nome, vida, ataque e chance de ataque crítico. Subclasses `Orc` e `Dragao` estendem `Inimigo` com atributos e comportamentos específicos.
+### Associações, Agregação e Composição
+- O `Heroi` possui uma associação com `Inimigo` durante as batalhas.
+- O sistema de ranking utiliza agregação para armazenar pontuações.
+- O uso de poções dentro do herói demonstra composição, pois o herói gerencia seu próprio inventário de poções.
 
-- **IAcoesDeCombate (interface)**: Define métodos para ações de combate que `Heroi` deve implementar, promovendo polimorfismo.
-
-- **RankingManager (classe utilitária)**: Gerencia a persistência do ranking de jogadores em arquivo texto.
-
-- **MostrarDescricao (classe utilitária)**: Fornece descrições para as classes de heróis, modularizando a apresentação.
-
-**Relações entre as classes:**
-- Herança: `Guerreiro`, `Mago`, `Anao`, `Elfo` herdam de `Heroi`; `Orc`, `Dragao` herdam de `Inimigo`.
-- Implementação de interface: `Heroi` implementa `IAcoesDeCombate`.
-- Associação: `Principal` associa herói e inimigo durante o jogo.
-- Composição/Agregação: `Principal` utiliza instâncias de `Heroi`, `Inimigo` e classes utilitárias.
+---
 
 ## Como Executar o Projeto
 
-1. **Pré-requisitos:** Java JDK instalado (versão 8 ou superior).
+### Pré-requisitos
+- Java JDK instalado (versão 8 ou superior)
+- IDE ou editor de texto para Java (ex: IntelliJ, Eclipse, VSCode)
+- Linha de comando ou terminal para compilar e executar
 
-2. **Compilar:**
-   - Compile todas as classes do projeto. Exemplo:
-     ```
-     javac *.java
-     ```
+### Passos para executar
 
-3. **Executar:**
-   - Execute a classe principal:
-     ```
-     java Principal
-     ```
+1. Clone ou baixe o repositório do projeto.
+2. Compile as classes Java:
+```bash
+javac *.java
+```
+3. Execute a classe principal:
+```bash
+java Principal
+```
+4. Siga as instruções no console para jogar.
 
-4. **Funcionamento:**
-   - Siga as instruções do console para criar seu herói, escolher a classe e iniciar a batalha contra inimigos.
-   - Ao final, seu resultado será salvo no arquivo `ranking.txt` criado no diretório do programa.
+---
 
-## Uso do ChatGPT
+## Uso do ChatGPT no Desenvolvimento
 
-Durante o desenvolvimento, o ChatGPT foi utilizado para auxiliar na estruturação inicial do código, sugestões para organização modular, implementação de conceitos avançados como herança, polimorfismo, interfaces e tratamento de exceções. O suporte ajudou a acelerar o processo e garantir boas práticas, mas o desenvolvimento e as decisões finais foram realizadas pelo desenvolvedor.
+Durante o desenvolvimento deste projeto, utilizei o ChatGPT para:
+
+- Auxiliar na estruturação do código, especialmente para definição das classes e suas relações.
+- Gerar exemplos de código para classes abstratas, interfaces e implementação de polimorfismo.
+- Obter sugestões de tratamento de exceções e práticas de Clean Code.
+- Corrigir erros e aprimorar o design do projeto em tempo real, melhorando a organização do código.
+- Criar a documentação detalhada e o arquivo README para atender aos requisitos do professor.
+
+O ChatGPT serviu como um assistente para acelerar o processo de desenvolvimento e garantir um código mais limpo e organizado.
+
+---
 
 ## Referências e Recursos
 
 - Documentação oficial Java: https://docs.oracle.com/javase/8/docs/
-- Conceitos de POO e Design Patterns
-- Tutoriais e exemplos de RPG por turnos disponíveis online
-- ChatGPT (OpenAI) para auxílio na programação
+- Curso de Programação Orientada a Objetos – Material da disciplina
+- Artigos e tutoriais sobre POO, interfaces e design patterns
+- ChatGPT, ferramenta de linguagem natural da OpenAI para suporte no desenvolvimento
+
+---
+
+**Autor:** Leandro Bosco  
+**Data:** 2025
 

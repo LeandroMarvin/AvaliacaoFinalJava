@@ -51,9 +51,9 @@ public class Principal {
         heroi.exibirStatus();
 
         Inimigo[] inimigos = {
-            new Inimigo("Goblin", 50, 8, 0.1),
-            new Orc("Orc", 80, 15, 0.2),
-            new Dragao("Dragão", 150, 25, 0.3)
+            new Goblin(),
+            new Orc(),
+            new Dragao()
         };
 
         for (Inimigo inimigo : inimigos) {
