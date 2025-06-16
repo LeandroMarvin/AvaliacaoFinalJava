@@ -1,6 +1,5 @@
 Marvin;94
 MARVIN;84
-MARVIN TOTOSAUM;100
 MARVIN foi derrotado e fez 0 pontos. [15/06/2025 20:10]
 LEANDRO foi derrotado e fez 90 pontos. [15/06/2025 20:13]
 Leandro foi derrotado e fez 0 pontos. [15/06/2025 20:14]
