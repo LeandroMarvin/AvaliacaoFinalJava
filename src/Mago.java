@@ -1,7 +1,7 @@
 public class Mago extends Heroi {
 
     public Mago(String nome) {
-        super(nome, 70, 18, 120, "Mana");
+        super(nome, 80, 18, 120, "Mana");
     }
 
     @Override
